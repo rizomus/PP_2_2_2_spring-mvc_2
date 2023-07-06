@@ -16,11 +16,7 @@ public class CarsController {
     }
 
     @GetMapping(value = "/cars")
-    public String getCarsList(@RequestParam(value = "count",  required=false) Integer count, ModelMap model) {
-
-        if (count == null || count >= 5) {
-            count = 5;
-        }
+    public String getCarsList(@RequestParam(required=false, defaultValue = "5") Integer count, ModelMap model) {
         model.addAttribute("carsList", carServise.getCarsList(count));
         return "cars";
 

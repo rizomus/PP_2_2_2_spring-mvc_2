@@ -1,13 +1,14 @@
 package web.service;
 
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import web.model.Car;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Component
-public class CarServise {
+@Service
+public class CarServise implements CarServiseInterface {
 
     private List<Car> carsList;
     {
@@ -19,6 +20,7 @@ public class CarServise {
         carsList.add(new Car("Kamaz", 5, false));
     }
 
+    @Override
     public List<Car> getCarsList(int count) {
         return carsList.subList(0, count);
     }
